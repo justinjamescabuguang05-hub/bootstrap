@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Name Design</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+  background: #0f172a;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container-box {
+  background: #1e293b;
+  padding: 40px;
+  text-align: center;
+}
+
+.letter {
+  display: inline-block;
+  margin: 8px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.red { color: #ef4444; }
+.blue { color: #22c55e; }
+.cyan { color: #06b6d4; }
+
+.circle {
+  border: 2px solid;
+  border-radius: 50%;
+  padding: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-box">
+  <div id="name"></div>
+</div>
+
+<script>
+const name = "JUSTIN JAMES BANAGUA CABUGUANG";
+const container = document.getElementById("name");
+
+const icons = [
+  "fa-star",
+  "fa-heart",
+  "fa-bolt",
+  "fa-moon",
+  "fa-sun",
+  "fa-diamond",
+  "fa-fire",
+  "fa-leaf"
+];
+
+const colors = ["red", "blue", "cyan"];
+
+name.split("").forEach((char, index) => {
+  const span = document.createElement("span");
+  span.className = "letter";
+
+  if (char === " ") {
+    span.innerHTML = "&nbsp;&nbsp;";
+  } else {
+    const icon = icons[index % icons.length];
+    const color = colors[index % colors.length];
+
+    span.classList.add(color);
+
+    // Random circle style for some letters
+    if (index % 3 === 0) {
+      span.classList.add("circle");
+    }
+
+    span.innerHTML = `<i class="fa-solid ${icon}"></i><br>${char}`;
+  }
+
+  container.appendChild(span);
+});
+</script>
+
+</body>
+</html>
